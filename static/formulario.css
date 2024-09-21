@@ -1,0 +1,78 @@
+body {
+    font-size: 1.25em;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 2em;
+    color: var(--verde);
+    margin: 0;
+}
+
+h2 {
+    color: #E0E0E0;
+    margin: 10px 0 20px;
+}
+
+#campo-formulario {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #1E1E1E;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0 5px;
+    color: #E0E0E0;
+}
+
+input[type="text"],
+input[type="number"] {
+    font-size: 1em;
+    padding: 0.25em;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background: #282828;
+    color: #E0E0E0;
+}
+
+input[type="submit"] {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+
+.inline-inputs {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.inline-inputs div {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.inline-inputs div:last-child {
+    margin-right: 0;
+}

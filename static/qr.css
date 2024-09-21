@@ -1,0 +1,17 @@
+h1 {
+    text-align: center;
+    color: var(--verde);
+}
+
+h2 {
+    text-align: center;
+}
+
+img {
+    display: block;
+    margin: 20px auto;
+    max-width: 80%;
+    height: 90%;
+    border: 2px solid var(--verde);
+    border-radius: 10px;
+}

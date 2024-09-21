@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/formulario.css">
+    <title>Expo Técnica: 2024</title>
+</head>
+<body>
+    <header>
+        <h1>Expo tecnica 2024</h1>
+        <h3>¡Genera tu código y gana recompensas :O !</h3>
+    </header>
+    <main>
+        <div id="campo-formulario">
+            <form id="registro" method="POST">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" required pattern="[A-Za-záéíóúÁÉÍÓÚÑñ ]+" title="Solo se permiten letras.">
+                <br>
+            
+                <label for="apellido">Apellido</label>
+                <input type="text" id="apellido" name="apellido" required pattern="[A-Za-záéíóúÁÉÍÓÚÑñ ]+" title="Solo se permiten letras.">
+                <br>
+            
+                <div class="inline-inputs">
+                    <div>
+                        <label for="curso">Curso</label>
+                        <input type="number" id="curso" name="curso" required min="1" max="7">
+                    </div>
+                    <div>
+                        <label for="division">División</label>
+                        <input type="number" id="division" name="division" required min="1" max="7">
+                    </div>
+                </div>
+            
+                <label for="acompanantes">Cantidad de acompañantes</label>
+                <input type="number" id="acompanantes" value="0" name="acompanantes" required min="0" max="10">
+                <br>
+            
+                <input type="submit" value="Enviar">
+            </form>
+        </div>
+    </main>
+</body>
+</html>
