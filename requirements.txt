@@ -1,1 +1,15 @@
+blinker
+click
+colorama
+Flask
+itsdangerous
+Jinja2
+MarkupSafe
+numpy
+opencv-python
+pip
+pypng
 pyzbar
+qrcode
+typing_extensions
+Werkzeug
