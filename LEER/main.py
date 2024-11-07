@@ -2,25 +2,23 @@ import cv2
 from pyzbar.pyzbar import decode
 from ast import literal_eval
 import base_datos as db
+import time  # Importar módulo de tiempo
 
-MOSTRAR_CAMARA = True
 LEER_IMAGEN = False
 IMAGEN = cv2.imread('ejemplo-codigo.jpeg')
+print(IMAGEN)
 
-# Iniciar la camara
+# Iniciar la cámara
 INDICE_CAMARA = 1
 camara = cv2.VideoCapture(INDICE_CAMARA)
 
 while camara.isOpened():
-    ret, frame = camara.read()
+    sucess, frame = camara.read()
     
-    if not ret:
-        break
+    if not sucess:
+        continue
 
-    if MOSTRAR_CAMARA:
-        cv2.imshow('Frame', frame)
-
-    # ENTRE LEER DESDE LA CAMARA O LEER DESDE IMAGEN
+    # ENTRE LEER DESDE LA CÁMARA O LEER DESDE IMAGEN
     decoded_frame = decode(frame if not LEER_IMAGEN else (IMAGEN[:, :, :1].tobytes(), *IMAGEN.shape[:2]))
 
     if len(decoded_frame) > 0:
@@ -30,16 +28,22 @@ while camara.isOpened():
 
         print(data)
         
+        
         if (es_valido := data.get('QR_EXPO')) is not None and es_valido == "true":
-            break
-    
-    # Extraemos las coordenadas de la caja que encierra el QR
-        (x, y, w, h) = qr_code.rect
-        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+            (x, y, w, h) = qr_code.rect
+            cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+            cv2.putText(frame, "!!! LEIDO !!!", (50, 50), cv2.FONT_HERSHEY_PLAIN, 1, (0, 255, 0), 2, cv2.LINE_AA)
+            cv2.imshow('Frame', frame)
+            LEER_IMAGEN = False
+            time.sleep(3)
+
+    if cv2.waitKey(1) & 0xFF == 69:
+        LEER_IMAGEN = not LEER_IMAGEN
 
     if cv2.waitKey(1) & 0xFF == 32:
         break
 
-# Libera la cámara y cierra las ventanas
+    cv2.imshow('Frame', frame)
+    
 camara.release()
 cv2.destroyAllWindows()
