@@ -2,7 +2,6 @@ import cv2
 from pyzbar.pyzbar import decode
 from ast import literal_eval
 import base_datos as db
-import time  # Importar módulo de tiempo
 
 LEER_IMAGEN = False
 IMAGEN = cv2.imread('ejemplo-codigo.jpeg')
@@ -28,17 +27,9 @@ while camara.isOpened():
 
         print(data)
         
-        
         if (es_valido := data.get('QR_EXPO')) is not None and es_valido == "true":
             (x, y, w, h) = qr_code.rect
             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-            cv2.putText(frame, "!!! LEIDO !!!", (50, 50), cv2.FONT_HERSHEY_PLAIN, 1, (0, 255, 0), 2, cv2.LINE_AA)
-            cv2.imshow('Frame', frame)
-            LEER_IMAGEN = False
-            time.sleep(3)
-
-    if cv2.waitKey(1) & 0xFF == 69:
-        LEER_IMAGEN = not LEER_IMAGEN
 
     if cv2.waitKey(1) & 0xFF == 32:
         break

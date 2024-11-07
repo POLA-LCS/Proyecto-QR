@@ -15,7 +15,7 @@ def crear_qr(datos_formulario: dict[str, str], id_unico: str):
     datos_json = dumps(
         {"ID": id_unico, **{
             key.upper(): '_'.join(value.lower().split(' ')) for key, value in datos_formulario.items()
-        }, "QR_EXPO": "true"}
+        }, "VALIDO": "true"}
     )
     
     QR.add_data(datos_json)
